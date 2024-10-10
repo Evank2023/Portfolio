@@ -1,6 +1,7 @@
 # Plant Co. Data Analysis Project
 
-## Power BI DAX Queries
+### Power BI Plant Co. Condensed Dynamic Dashboards Report
+#### Power BI DAX Queries
 
 [Base Measures](https://github.com/Evank2023/Portfolio/blob/PlantCo/CondenseDynamicDashboardsReport/Base_Measures.md)
 
