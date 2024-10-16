@@ -91,9 +91,9 @@ ORDER BY
 </details>
 
 > [!NOTE]
-> **FORMAT(InvoiceDate, 'MM')** is used to extract the month part from the date without the year.
-The **CASE** statements check the year of the InvoiceDate and calculate the total sales for each specific year (2013, 2014, 2015).
-The **GROUP BY** and **ORDER BY** clauses will automatically sort by year and month because of the **FORMAT(InvoiceDate, 'yyyy-MM')**.
+> `FORMAT(InvoiceDate, 'MM')` is used to extract the month part from the date without the year.
+The `CASE` statements check the year of the InvoiceDate and calculate the total sales for each specific year (2013, 2014, 2015).
+The `GROUP BY` and `ORDER BY` clauses will automatically sort by year and month because of the `FORMAT(InvoiceDate, 'yyyy-MM')`.
 
 _________________________________________________________________
 
@@ -312,7 +312,31 @@ ORDER BY
 
 </details>
 
-
+> [!NOTE]
+> **Common Table Expression (CTE)** :
+> 
+> - The `MonthlySales` CTE calculates the total sales for each month in year by summing the products of quantity and unit price from the `InvoiceLines`.
+> 
+> **Row Numbering** :
+> 
+> - The first subquery (aliased as `A`) calculates `ROW_NUMBER()` for the monthly sales in ascending order.
+> - The second subquery (aliased as `B`) calculates `ROW_NUMBER()` for the same monthly sales in descending order.
+> 
+> **Joining** :
+> 
+> - The two subqueries are joined based on the row numbers (`RowAsc` and `RowDesc`) to align the results of ascending and descending sales on the same row.
+> 
+> **Selecting Columns** :
+> 
+> - The final selection includes both months (`MonthAsc` and `MonthDesc`) and their corresponding sales figures (`MonthlySalesAsc` and `MonthlySalesDesc`).
+> 
+> **Ordering** :
+> 
+> - The final result is ordered by `MonthlySalesAsc`, but you can adjust this ordering as needed.
+> 
+> **Output:**
+> 
+> - This query will provide a side-by-side comparison of the monthly sales figures in ascending and descending order, allowing for easy analysis.
 
 
 
