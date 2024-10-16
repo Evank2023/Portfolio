@@ -28,7 +28,41 @@ FROM [Sales].[Orders]
 ![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-09-30%20020419.png "Row Count Sales")
 
 </details>
-________________________________________________________
+
+___________________________________________
+#### Duplicates in the [Sales] schema
+
+```sql
+SELECT [InvoiceLineID] , COUNT(*) AS Count_NB
+FROM [Sales].[InvoiceLines]
+GROUP BY [InvoiceLineID]
+HAVING COUNT(*) >1
+
+SELECT [InvoiceID] , COUNT(*) AS Count_NB
+FROM [Sales].[Invoices]
+GROUP BY [InvoiceID]
+HAVING COUNT(*) >1
+
+SELECT [OrderLineID] , COUNT(*) AS Count_NB
+FROM [Sales].[OrderLines]
+GROUP BY [OrderLineID]
+HAVING COUNT(*) >1
+
+SELECT [OrderID] , COUNT(*) AS Count_NB
+FROM [Sales].[Orders]
+GROUP BY [OrderID]
+HAVING COUNT(*) >1
+```
+
+<details>
+	
+<summary>Result Screenshot</summary>
+
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/image.png "No duplicates")
+
+</details>
+
+___________________________________________
 
 #### Empty values in the [Sales] schema
 
