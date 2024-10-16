@@ -3,10 +3,10 @@
 #### Data row counts [Sales] schema
 
 Data row counts in the [Sales] schema
-- The [InvoiceLines] table contains 228,265 rows.
-- The [Invoices] table contains 70,510 rows.
-- The [OrderLines] table contains 231,412 rows.
-- The [Orders] table contains 73,595 rows.
+- The [InvoiceLines] : **228,265** rows.
+- The [Invoices] : **70,510** rows.
+- The [OrderLines] : **231,412** rows.
+- The [Orders] : **73,595** rows.
 
 ```sql
 SELECT COUNT(*) AS InvoiceLineNB
