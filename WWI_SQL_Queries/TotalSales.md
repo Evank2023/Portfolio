@@ -5,7 +5,7 @@ while the **[Sales].[Invoices]** table contains the invoice date. These tables a
 
 _________________________________________________________________________
 
-#### Total Sales 2013 to 2015
+### Total Sales 2013 to 2015
 
 ```sql
 SELECT (
@@ -58,7 +58,7 @@ WHERE
 </details>
 
 _________________________________________________________
-#### Total Monthly Sales
+### Total Monthly Sales
 
 ```sql
 SELECT 
@@ -95,6 +95,40 @@ ORDER BY
 The **CASE** statements check the year of the InvoiceDate and calculate the total sales for each specific year (2013, 2014, 2015).
 The **GROUP BY** and **ORDER BY** clauses will automatically sort by year and month because of the **FORMAT(InvoiceDate, 'yyyy-MM')**.
 
+_________________________________________________________________
+
+### Total Daily Sales
+
+```sql
+SELECT 
+  FORMAT(InvoiceDate, 'MM-dd') AS Date,
+  SUM(CASE WHEN YEAR(InvoiceDate) = 2013 THEN Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice] ELSE 0 END) AS Sales_2013,
+  SUM(CASE WHEN YEAR(InvoiceDate) = 2014 THEN Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice] ELSE 0 END) AS Sales_2014,
+  SUM(CASE WHEN YEAR(InvoiceDate) = 2015 THEN Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice] ELSE 0 END) AS Sales_2015,
+  SUM(CASE WHEN YEAR(InvoiceDate) = 2016 THEN Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice] ELSE 0 END) AS Sales_2016
+FROM 
+    [WideWorldImporters].[Sales].[Invoices] AS Invoices
+JOIN 
+    [WideWorldImporters].[Sales].[InvoiceLines] AS Invoice_Lines
+ON 
+    Invoices.[InvoiceID] = Invoice_Lines.[InvoiceID]
+WHERE 
+    InvoiceDate BETWEEN '2013-01-01' AND '2016-05-31'
+GROUP BY 
+    FORMAT(InvoiceDate, 'MM-dd')
+ORDER BY 
+    Date
+
+
+```
+
+<details>
+
+<summary>Result Screenshot</summary>
+
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-16%20075415.png " Daily Sales 2013 to 2016 ")
+
+</details>
 
 
 
