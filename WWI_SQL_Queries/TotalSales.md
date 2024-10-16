@@ -130,6 +130,192 @@ ORDER BY
 
 </details>
 
+_____________________________________________________________________
+
+### Order By VS DESC
+
+```sql
+--- 2013 Sales ---
+WITH MonthlySales AS (
+    SELECT 
+        YEAR(Invoices.[InvoiceDate]) AS Year, 
+        MONTH(Invoices.[InvoiceDate]) AS Month,
+        SUM(Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice]) AS MonthlySales
+    FROM 
+        [Sales].[Invoices] AS Invoices
+    JOIN 
+        [Sales].[InvoiceLines] AS Invoice_Lines
+        ON Invoices.[InvoiceID] = Invoice_Lines.[InvoiceID]
+    WHERE 
+        Invoices.[InvoiceDate] BETWEEN '2013-01-01' AND '2013-12-31'
+    GROUP BY 
+        YEAR(Invoices.[InvoiceDate]), 
+        MONTH(Invoices.[InvoiceDate])
+)
+
+-- Applying separate ranks to force ascending and descending sales
+SELECT 
+    A.Year, 
+    A.Month AS MonthAsc, 
+    A.MonthlySales AS MonthlySalesAsc, 
+    B.Month AS MonthDesc, 
+    B.MonthlySales AS MonthlySalesDesc
+FROM 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY MonthlySales ASC) AS RowAsc FROM MonthlySales) A
+JOIN 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY MonthlySales DESC) AS RowDesc FROM MonthlySales) B
+    ON A.RowAsc = B.RowDesc
+ORDER BY 
+    A.MonthlySales ASC
+```
+
+<details>
+
+<summary>Result Screenshot</summary>
+
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-16%20081827.png " 2013 ")
+
+</details>
+
+
+
+```sql
+--- 2014 Sales ---
+WITH MonthlySales AS (
+    SELECT 
+        YEAR(Invoices.[InvoiceDate]) AS Year, 
+        MONTH(Invoices.[InvoiceDate]) AS Month,
+        SUM(Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice]) AS MonthlySales
+    FROM 
+        [Sales].[Invoices] AS Invoices
+    JOIN 
+        [Sales].[InvoiceLines] AS Invoice_Lines
+        ON Invoices.[InvoiceID] = Invoice_Lines.[InvoiceID]
+    WHERE 
+        Invoices.[InvoiceDate] BETWEEN '2014-01-01' AND '2014-12-31'
+    GROUP BY 
+        YEAR(Invoices.[InvoiceDate]), 
+        MONTH(Invoices.[InvoiceDate])
+)
+
+-- Applying separate ranks to force ascending and descending sales
+SELECT 
+    A.Year, 
+    A.Month AS MonthAsc, 
+    A.MonthlySales AS MonthlySalesAsc, 
+    B.Month AS MonthDesc, 
+    B.MonthlySales AS MonthlySalesDesc
+FROM 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY MonthlySales ASC) AS RowAsc FROM MonthlySales) A
+JOIN 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY MonthlySales DESC) AS RowDesc FROM MonthlySales) B
+    ON A.RowAsc = B.RowDesc
+ORDER BY 
+    A.MonthlySales ASC
+```
+
+<details>
+
+<summary>Result Screenshot</summary>
+
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-16%20082822.png " 2014 ")
+
+</details>
+
+
+
+```sql
+--- 2015 Sales ---
+WITH MonthlySales AS (
+    SELECT 
+        YEAR(Invoices.[InvoiceDate]) AS Year, 
+        MONTH(Invoices.[InvoiceDate]) AS Month,
+        SUM(Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice]) AS MonthlySales
+    FROM 
+        [Sales].[Invoices] AS Invoices
+    JOIN 
+        [Sales].[InvoiceLines] AS Invoice_Lines
+        ON Invoices.[InvoiceID] = Invoice_Lines.[InvoiceID]
+    WHERE 
+        Invoices.[InvoiceDate] BETWEEN '2015-01-01' AND '2015-12-31'
+    GROUP BY 
+        YEAR(Invoices.[InvoiceDate]), 
+        MONTH(Invoices.[InvoiceDate])
+)
+
+-- Applying separate ranks to force ascending and descending sales
+SELECT 
+    A.Year, 
+    A.Month AS MonthAsc, 
+    A.MonthlySales AS MonthlySalesAsc, 
+    B.Month AS MonthDesc, 
+    B.MonthlySales AS MonthlySalesDesc
+FROM 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY MonthlySales ASC) AS RowAsc FROM MonthlySales) A
+JOIN 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY MonthlySales DESC) AS RowDesc FROM MonthlySales) B
+    ON A.RowAsc = B.RowDesc
+ORDER BY 
+    A.MonthlySales ASC
+```
+
+<details>
+
+<summary>Result Screenshot</summary>
+
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-16%20083113.png " 2015 ")
+
+</details>
+
+
+
+```sql
+--- 2016 Sales ---
+WITH MonthlySales AS (
+    SELECT 
+        YEAR(Invoices.[InvoiceDate]) AS Year, 
+        MONTH(Invoices.[InvoiceDate]) AS Month,
+        SUM(Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice]) AS MonthlySales
+    FROM 
+        [Sales].[Invoices] AS Invoices
+    JOIN 
+        [Sales].[InvoiceLines] AS Invoice_Lines
+        ON Invoices.[InvoiceID] = Invoice_Lines.[InvoiceID]
+    WHERE 
+        Invoices.[InvoiceDate] BETWEEN '2016-01-01' AND '2016-05-31'
+    GROUP BY 
+        YEAR(Invoices.[InvoiceDate]), 
+        MONTH(Invoices.[InvoiceDate])
+)
+
+-- Applying separate ranks to force ascending and descending sales
+SELECT 
+    A.Year, 
+    A.Month AS MonthAsc, 
+    A.MonthlySales AS MonthlySalesAsc, 
+    B.Month AS MonthDesc, 
+    B.MonthlySales AS MonthlySalesDesc
+FROM 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY MonthlySales ASC) AS RowAsc FROM MonthlySales) A
+JOIN 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY MonthlySales DESC) AS RowDesc FROM MonthlySales) B
+    ON A.RowAsc = B.RowDesc
+ORDER BY 
+    A.MonthlySales ASC
+```
+
+<details>
+
+<summary>Result Screenshot</summary>
+
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-16%20083426.png " 2016 ")
+
+</details>
+
+
+
+
+
 
 
 
