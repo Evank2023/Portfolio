@@ -3,7 +3,7 @@
 [Data Inspection SQL Query](WWI_SQL_Queries/Data_Inspection.md)
 
 ### Find the start date and end date for Invoices and Orders
-[Data Inspection SQL Query](WWI_SQL_Queries/MinMaxDate.md)
+[Minimum and Maximum Date SQL Query](https://github.com/Evank2023/Portfolio/blob/WWI/WWI_SQL_Queries/MinMaxDate.md)
 
 ### Sales Volume
 [Sales Volume SQL Query](WWI_SQL_Queries/SalesVolume.md)
