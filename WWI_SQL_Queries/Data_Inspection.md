@@ -131,7 +131,7 @@ WHERE
 	
 <summary>Result Screenshot</summary>
 
-![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/image1.png "No missing values")
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/image1.png "No empty values")
 
 </details>
 
