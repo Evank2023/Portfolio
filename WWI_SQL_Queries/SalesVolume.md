@@ -93,4 +93,200 @@ SELECT
 
 </details>
 
+_________________________________________
+
+### Invoice Volume ASC vs DESC
+
+```sql
+
+--- Invoice Volume 2013 ---
+
+WITH MonthlyVolume AS (
+SELECT 
+	YEAR([Sales].[Invoices].[InvoiceDate]) AS Year,
+	MONTH([Sales].[Invoices].[InvoiceDate]) AS Month,
+    COUNT(CASE WHEN YEAR([InvoiceDate]) = 2013 THEN [InvoiceID] END) AS Invoice_Volume
+FROM 
+    [Sales].[Invoices]
+WHERE 
+    [InvoiceDate] BETWEEN '2013-01-01' AND '2013-12-31'  
+GROUP BY 
+    YEAR([Sales].[Invoices].[InvoiceDate]),
+	MONTH([Sales].[Invoices].[InvoiceDate])
+)
+
+SELECT 
+    A.Year, 
+    A.Month AS MonthAsc, 
+    A.Invoice_Volume AS Invoice_Volume_Asc, 
+    B.Month AS MonthDesc, 
+    B.Invoice_Volume AS Invoice_Volume_Desc
+FROM 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY Invoice_Volume ASC) AS RowAsc FROM MonthlyVolume) A
+JOIN 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY Invoice_Volume DESC) AS RowDesc FROM MonthlyVolume) B
+    ON A.RowAsc = B.RowDesc
+ORDER BY 
+    A.Invoice_Volume ASC
+
+```
+
+<details>
+
+<summary>Result Screenshot</summary>
+
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-17%20222727.png " Invoice Volume ")
+
+</details>
+
+___________________________________________________________
+
+```sql
+
+--- Invoice Volume 2014 ---
+
+WITH MonthlyVolume AS (
+SELECT 
+	YEAR([Sales].[Invoices].[InvoiceDate]) AS Year,
+	MONTH([Sales].[Invoices].[InvoiceDate]) AS Month,
+    COUNT(CASE WHEN YEAR([InvoiceDate]) = 2014 THEN [InvoiceID] END) AS Invoice_Volume
+FROM 
+    [Sales].[Invoices]
+WHERE 
+    [InvoiceDate] BETWEEN '2014-01-01' AND '2014-12-31'  
+GROUP BY 
+    YEAR([Sales].[Invoices].[InvoiceDate]),
+	MONTH([Sales].[Invoices].[InvoiceDate])
+)
+
+SELECT 
+    A.Year, 
+    A.Month AS MonthAsc, 
+    A.Invoice_Volume AS Invoice_Volume_Asc, 
+    B.Month AS MonthDesc, 
+    B.Invoice_Volume AS Invoice_Volume_Desc
+FROM 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY Invoice_Volume ASC) AS RowAsc FROM MonthlyVolume) A
+JOIN 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY Invoice_Volume DESC) AS RowDesc FROM MonthlyVolume) B
+    ON A.RowAsc = B.RowDesc
+ORDER BY 
+    A.Invoice_Volume ASC
+```
+
+<details>
+
+<summary>Result Screenshot</summary>
+
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-17%20224531.png " Invoice Volume 2014 ")
+
+</details>
+
+______________________________________________________________
+
+```sql
+--- Invoice Volume 2015 ---
+
+WITH MonthlyVolume AS (
+SELECT 
+	YEAR([Sales].[Invoices].[InvoiceDate]) AS Year,
+	MONTH([Sales].[Invoices].[InvoiceDate]) AS Month,
+    COUNT(CASE WHEN YEAR([InvoiceDate]) = 2015 THEN [InvoiceID] END) AS Invoice_Volume
+FROM 
+    [Sales].[Invoices]
+WHERE 
+    [InvoiceDate] BETWEEN '2015-01-01' AND '2015-12-31'  
+GROUP BY 
+    YEAR([Sales].[Invoices].[InvoiceDate]),
+	MONTH([Sales].[Invoices].[InvoiceDate])
+)
+
+SELECT 
+    A.Year, 
+    A.Month AS MonthAsc, 
+    A.Invoice_Volume AS Invoice_Volume_Asc, 
+    B.Month AS MonthDesc, 
+    B.Invoice_Volume AS Invoice_Volume_Desc
+FROM 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY Invoice_Volume ASC) AS RowAsc FROM MonthlyVolume) A
+JOIN 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY Invoice_Volume DESC) AS RowDesc FROM MonthlyVolume) B
+    ON A.RowAsc = B.RowDesc
+ORDER BY 
+    A.Invoice_Volume ASC
+```
+
+
+<details>
+
+<summary>Result Screenshot</summary>
+
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-17%20225020.png " Invoice Volume 2015 ")
+
+</details>
+
+____________________________________________________
+
+```sql
+
+--- Invoice Volume 2016 ---
+
+WITH MonthlyVolume AS (
+SELECT 
+	YEAR([Sales].[Invoices].[InvoiceDate]) AS Year,
+	MONTH([Sales].[Invoices].[InvoiceDate]) AS Month,
+    COUNT(CASE WHEN YEAR([InvoiceDate]) = 2016 THEN [InvoiceID] END) AS Invoice_Volume
+FROM 
+    [Sales].[Invoices]
+WHERE 
+    [InvoiceDate] BETWEEN '2016-01-01' AND '2016-05-31'  
+GROUP BY 
+    YEAR([Sales].[Invoices].[InvoiceDate]),
+	MONTH([Sales].[Invoices].[InvoiceDate])
+)
+
+SELECT 
+    A.Year, 
+    A.Month AS MonthAsc, 
+    A.Invoice_Volume AS Invoice_Volume_Asc, 
+    B.Month AS MonthDesc, 
+    B.Invoice_Volume AS Invoice_Volume_Desc
+FROM 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY Invoice_Volume ASC) AS RowAsc FROM MonthlyVolume) A
+JOIN 
+    (SELECT *, ROW_NUMBER() OVER (ORDER BY Invoice_Volume DESC) AS RowDesc FROM MonthlyVolume) B
+    ON A.RowAsc = B.RowDesc
+ORDER BY 
+    A.Invoice_Volume ASC
+```
+
+<details>
+
+<summary>Result Screenshot</summary>
+
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-17%20225404.png " Invoice Volyme 2016 ")
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
