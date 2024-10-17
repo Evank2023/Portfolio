@@ -268,8 +268,34 @@ ORDER BY
 
 </details>
 
+____________________________________________________
 
+### Daily Invoice Volyme 2013 to 2016
 
+```sql
+SELECT 
+    FORMAT(InvoiceDate, 'MM-dd') AS Date,
+    COUNT(CASE WHEN YEAR([InvoiceDate]) = 2013 THEN [InvoiceID] END) AS Volume_2013,
+    COUNT(CASE WHEN YEAR([InvoiceDate]) = 2014 THEN [InvoiceID] END) AS Volume_2014,
+    COUNT(CASE WHEN YEAR([InvoiceDate]) = 2015 THEN [InvoiceID] END) AS Volume_2015,
+    COUNT(CASE WHEN YEAR([InvoiceDate]) = 2016 THEN [InvoiceID] END) AS Volume_2016
+FROM 
+    [Sales].[Invoices]
+WHERE 
+    [InvoiceDate] BETWEEN '2013-01-01' AND '2016-05-31'  -- Date range for all years
+GROUP BY 
+     FORMAT(InvoiceDate, 'MM-dd')
+ORDER BY 
+    Date
+```
+
+<details>
+
+<summary>Result Screenshot</summary>
+
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-17%20225858.png " Daily Invboice Counts ")
+
+</details>
 
 
 
