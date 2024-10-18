@@ -41,6 +41,8 @@ WHERE
 
 </details>
 
+> [!Note]
+> The `CASE` statement allows to calculate the sales amount for different date ranges within a single `SUM()` operation.
 _________________________________________________________
 ### Total Monthly Sales
 
