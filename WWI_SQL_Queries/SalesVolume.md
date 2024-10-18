@@ -50,46 +50,21 @@ FROM
 ### Annual Invoice Volume 2013-2016
 ```sql
 SELECT
-	(                             --- 1st Subquery For 2013
-	SELECT
-		COUNT([InvoiceID])
-	FROM
-		[Sales].[Invoices]
-	WHERE
-		[InvoiceDate] BETWEEN '2013-01-10' AND '2013-12-31'
-	) AS '2013'
-	,
-	(                              --- 2nd Subquery For 2014
-	SELECT
-		COUNT([InvoiceID])
-	FROM
-		[Sales].[Invoices]
-	WHERE
-		[InvoiceDate] BETWEEN '2014-01-01' AND '2014-12-31'
-	) AS '2014'
-	,
-	(                               --- 3rd Subquery For 2015
-		SELECT
-		COUNT([InvoiceID])
-	FROM
-		[Sales].[Invoices]
-	WHERE
-		[InvoiceDate] BETWEEN '2015-01-01' AND '2015-12-31'
-	) AS '2015'
-	,
-	(                               --- 4th Subquery For 2016
-		SELECT
-		COUNT([InvoiceID])
-	FROM
-		[Sales].[Invoices]
-	WHERE
-		[InvoiceDate] BETWEEN '2016-01-01' AND '2016-12-31'
-	) AS '2016'
+    YEAR([InvoiceDate]) AS InvoiceYear,
+    COUNT([InvoiceID]) AS InvoiceCount
+FROM
+    [Sales].[Invoices]
+WHERE
+    [InvoiceDate] BETWEEN '2013-01-01' AND '2016-12-31'
+GROUP BY
+    YEAR([InvoiceDate])
+ORDER BY
+    InvoiceYear
 ```
 <details>
 <summary>Result Screenshot</summary>
 
-![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-02%20182602.png "Annual Invoice Volume 2013-2016")
+![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-18%20040935.png "Annual Invoice Volume 2013-2016")
 
 </details>
 
@@ -296,20 +271,6 @@ ORDER BY
 ![alt text]( https://github.com/Evank2023/Portfolio/blob/WWI/ResultScreenshot/Screenshot%202024-10-17%20225858.png " Daily Invboice Counts ")
 
 </details>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
