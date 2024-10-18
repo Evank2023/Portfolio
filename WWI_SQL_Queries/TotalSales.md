@@ -78,7 +78,6 @@ ORDER BY
 
 > [!NOTE]
 > `FORMAT(InvoiceDate, 'MM')` is used to extract the month part from the date without the year.
-The `CASE` statements check the year of the InvoiceDate and calculate the total sales for each specific year (2013, 2014, 2015).
 The `GROUP BY` and `ORDER BY` clauses will automatically sort by year and month because of the `FORMAT(InvoiceDate, 'yyyy-MM')`.
 
 _________________________________________________________________
@@ -104,8 +103,6 @@ GROUP BY
     FORMAT(InvoiceDate, 'MM-dd')
 ORDER BY 
     Date
-
-
 ```
 
 <details>
@@ -138,8 +135,7 @@ WITH MonthlySales AS (
         YEAR(Invoices.[InvoiceDate]), 
         MONTH(Invoices.[InvoiceDate])
 )
-
--- Applying separate ranks to force ascending and descending sales
+-- Applying separate ranks to force ascending and descending sales ---
 SELECT 
     A.Year, 
     A.Month AS MonthAsc, 
