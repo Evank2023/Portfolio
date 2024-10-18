@@ -8,45 +8,29 @@ _________________________________________________________________________
 ### Total Sales 2013 to 2015
 
 ```sql
-SELECT (
 SELECT 
-	SUM(Invoice_Lines.[Quantity]*Invoice_Lines.[UnitPrice])
-
+    SUM(CASE 
+            WHEN InvoiceDate BETWEEN '2013-01-01' AND '2013-12-31' 
+            THEN Invoice_Lines.Quantity * Invoice_Lines.UnitPrice 
+            ELSE 0 
+        END) AS Total_Sales_2013,
+    SUM(CASE 
+            WHEN InvoiceDate BETWEEN '2014-01-01' AND '2014-12-31' 
+            THEN Invoice_Lines.Quantity * Invoice_Lines.UnitPrice 
+            ELSE 0 
+        END) AS Total_Sales_2014,
+    SUM(CASE 
+            WHEN InvoiceDate BETWEEN '2015-01-01' AND '2015-12-31' 
+            THEN Invoice_Lines.Quantity * Invoice_Lines.UnitPrice 
+            ELSE 0 
+        END) AS Total_Sales_2015
 FROM 
-	[WideWorldImporters].[Sales].[Invoices] AS Invoices,
-	[WideWorldImporters].[Sales].[InvoiceLines] AS Invoice_Lines
-
+    [Sales].[Invoices] AS Invoices
+JOIN 
+    [Sales].[InvoiceLines] AS Invoice_Lines 
+    ON Invoices.InvoiceID = Invoice_Lines.InvoiceID
 WHERE 
-	Invoices.[InvoiceID] = Invoice_Lines.[InvoiceID] and
-	InvoiceDate between '2013-01-01' and '2013-12-31'
-	) as Total_Sales_2013
-	,
-	(
-SELECT 
-	SUM(Invoice_Lines.[Quantity]*Invoice_Lines.[UnitPrice])
-
-FROM 
-	[WideWorldImporters].[Sales].[Invoices] AS Invoices,
-	[WideWorldImporters].[Sales].[InvoiceLines] AS Invoice_Lines
-
-WHERE 
-	Invoices.[InvoiceID] = Invoice_Lines.[InvoiceID] and
-	InvoiceDate between '2014-01-01' and '2014-01-31'
-	) as Total_Sales_2014
-	,
-	(
-SELECT 
-	SUM(Invoice_Lines.[Quantity]*Invoice_Lines.[UnitPrice])
-
-FROM 
-	[WideWorldImporters].[Sales].[Invoices] AS Invoices,
-	[WideWorldImporters].[Sales].[InvoiceLines] AS Invoice_Lines
-
-WHERE 
-	Invoices.[InvoiceID] = Invoice_Lines.[InvoiceID] and
-	InvoiceDate between '2015-01-01' and '2015-01-31'
-	) as Total_Sales_2015
-
+    InvoiceDate BETWEEN '2013-01-01' AND '2015-12-31'
 ```
 
 <details>
@@ -68,9 +52,9 @@ SELECT
   SUM(CASE WHEN YEAR(InvoiceDate) = 2015 THEN Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice] ELSE 0 END) AS Sales_2015,
   SUM(CASE WHEN YEAR(InvoiceDate) = 2016 THEN Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice] ELSE 0 END) AS Sales_2016
 FROM 
-    [WideWorldImporters].[Sales].[Invoices] AS Invoices
+    [Sales].[Invoices] AS Invoices
 JOIN 
-    [WideWorldImporters].[Sales].[InvoiceLines] AS Invoice_Lines
+    [Sales].[InvoiceLines] AS Invoice_Lines
 ON 
     Invoices.[InvoiceID] = Invoice_Lines.[InvoiceID]
 WHERE 
@@ -107,9 +91,9 @@ SELECT
   SUM(CASE WHEN YEAR(InvoiceDate) = 2015 THEN Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice] ELSE 0 END) AS Sales_2015,
   SUM(CASE WHEN YEAR(InvoiceDate) = 2016 THEN Invoice_Lines.[Quantity] * Invoice_Lines.[UnitPrice] ELSE 0 END) AS Sales_2016
 FROM 
-    [WideWorldImporters].[Sales].[Invoices] AS Invoices
+    [Sales].[Invoices] AS Invoices
 JOIN 
-    [WideWorldImporters].[Sales].[InvoiceLines] AS Invoice_Lines
+    [Sales].[InvoiceLines] AS Invoice_Lines
 ON 
     Invoices.[InvoiceID] = Invoice_Lines.[InvoiceID]
 WHERE 
