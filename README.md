@@ -1,7 +1,7 @@
 
 # Data Analaysis Projects
 ### [Plant Co. Data Analysis Projects](https://github.com/Evank2023/Portfolio/tree/PlantCo)
-### [Wide World Importers](https://github.com/Evank2023/Portfolio/tree/WWI)
+### [Wide World Importers Data Analysis Projects](https://github.com/Evank2023/Portfolio/tree/WWI)
 
 ___
 # School Team Projects
