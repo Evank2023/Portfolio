@@ -1,0 +1,53 @@
+{
+  "build": "haa95532_4",
+  "build_number": 4,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "constrains": [
+    "anaconda-navigator >=1.9.8"
+  ],
+  "depends": [
+    "python"
+  ],
+  "extracted_package_dir": "C:\\Users\\A\\anaconda3\\pkgs\\powershell_shortcut-0.0.1-haa95532_4",
+  "files": [
+    "Menu/anaconda_powershell_console.ico",
+    "Menu/powershell_shortcut.json",
+    ".nonadmin",
+    "Menu/powershell_shortcut.json"
+  ],
+  "fn": "powershell_shortcut-0.0.1-haa95532_4.conda",
+  "license": "BSD",
+  "link": {
+    "source": "C:\\Users\\A\\anaconda3\\pkgs\\powershell_shortcut-0.0.1-haa95532_4",
+    "type": 1
+  },
+  "md5": "9a5196e515dccefaf0ddc40b454cf653",
+  "name": "powershell_shortcut",
+  "package_tarball_full_path": "C:\\Users\\A\\anaconda3\\pkgs\\powershell_shortcut-0.0.1-haa95532_4.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "Menu/anaconda_powershell_console.ico",
+        "path_type": "hardlink",
+        "sha256": "476bfa437f59c865dfac2fda147b463d041cceda77f0a959a8b9f45ab6fa3090",
+        "sha256_in_prefix": "476bfa437f59c865dfac2fda147b463d041cceda77f0a959a8b9f45ab6fa3090",
+        "size_in_bytes": 165702
+      },
+      {
+        "_path": "Menu/powershell_shortcut.json",
+        "path_type": "hardlink",
+        "sha256": "ca4e7248f0b136b0f0401869319f70883e556ade9f3dec2b72961add3c282db5",
+        "sha256_in_prefix": "ca4e7248f0b136b0f0401869319f70883e556ade9f3dec2b72961add3c282db5",
+        "size_in_bytes": 476
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "powershell_shortcut",
+  "sha256": "c5f3217a396f7629dbfba324bdc266bb697c2b902fba1a9ae7923886db5aadeb",
+  "size": 29653,
+  "subdir": "win-64",
+  "timestamp": 1718997977000,
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/powershell_shortcut-0.0.1-haa95532_4.conda",
+  "version": "0.0.1"
+}
