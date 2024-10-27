@@ -2,6 +2,7 @@
 # Data Analaysis Projects
 ### [Plant Co. Data Analysis Projects](https://github.com/Evank2023/Portfolio/blob/PlantCo/README.md)
 ### [Wide World Importers Data Analysis Projects](https://github.com/Evank2023/Portfolio/blob/WWI/README.md)
+### [Blue Pocket Shopping Mall Paid Search Marketing Campaign](https://github.com/Evank2023/Portfolio/blob/BluePocket/README.md)
 
 ___
 # School Team Projects
