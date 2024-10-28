@@ -18,7 +18,14 @@ A fictitious US shopping mall named "Blue Pocket" aims to evaluate their marketi
 - **P&L:** Profit and Loss, calculated using the formula **Revenue - Cost**.
 
 ---
+[PDF](https://github.com/Evank2023/Portfolio/blob/BluePocket/BluePocket.pdf)\
+[PBIX](https://github.com/Evank2023/Portfolio/blob/BluePocket/BluePocket.pbix)
 
+![First Slide](https://github.com/Evank2023/Portfolio/blob/BluePocket/Screenshot%202024-10-27%20082724.png)
+![Second Slide](https://github.com/Evank2023/Portfolio/blob/BluePocket/Screenshot%202024-10-27%20082754.png)
+
+
+---
 Over a 5-month period, the campaign generated $12.05M in sales but resulted in a total profit margin of -$73.41K. The return on ad spend was 0.88, and the return on investment was -0.12. Despite a near-profitable margin in October 2023, the overall campaign was not profitable.
 
 **Mobile vs Desktop**
